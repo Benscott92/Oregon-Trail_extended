@@ -4,6 +4,16 @@
 // an amount of food, with an initial value of 1.
 // an isHealthy property, with an initial value of true, which indicates whether a traveler is sick.
 // The Traveler class should also have the following methods:
+function toHTMLPassenger(passenger){
+    let passengerElement = document.createElement('div')
+    let passengerSummary = document.createElement('h3')
+    passengerElement.append(passengerSummary)
+    passengerSummary.append(passenger.name)
+    passengerElement.append(`Food: ${passenger.food}; Is Healthy: ${passenger.isHealthy}`)
+    main.append(passengerElement)
+    
+}
+
 
 class Traveler{
     constructor(name){

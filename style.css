@@ -1,0 +1,22 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: black;
+    color: chartreuse;
+}
+
+div{
+    margin: 10px;
+}
+input{
+    width: 120px;
+    margin-right: 3px;
+}
+button{
+    margin: 2px;
+}

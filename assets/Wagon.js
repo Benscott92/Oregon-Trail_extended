@@ -8,6 +8,28 @@ class Wagon{
     constructor(capacity){
         this.capacity = capacity
         this.passengers = []
+        this.currentPassengers = 0
+        this.toHTMLWagon()
+    }
+    // Display relevent information in the DOM about the wagons and traveler – for example: travelers name/food/isHealthy, and/or Wagon's passengers/capacity.
+    toHTMLWagon(){
+        let wagonElement = document.createElement('div')
+        let wagonName = document.createElement('h1')
+        wagonName.append('Wagon')        
+        wagonElement.append(wagonName)
+        
+        wagonElement.append('Wagon Capactity: ', this.capacity)       
+        main.append(wagonElement)
+    }
+
+    toHTMLPassenger(passenger){
+        let passengerElement = document.createElement('div')
+        let passengerSummary = document.createElement('h3')
+        passengerElement.append(passengerSummary)
+        passengerSummary.append(passenger.name)
+        passengerElement.append(`Food: ${passenger.food}; Is Healthy: ${passenger.isHealthy}`)
+        main.append(passengerElement)
+        
     }
 
     getAvailableSeatCount(){
@@ -15,7 +37,11 @@ class Wagon{
     }
     join(travler){
         if((this.capacity - this.passengers.length) > 0){ 
-        this.passengers.push(travler)}
+        this.passengers.push(travler)
+        this.toHTMLPassenger(travler)
+        this.currentPassengers += 1
+    }
+
     }
     shouldQuarantine(){
         for(let index = 0; index < this.passengers.length; index++){
@@ -32,6 +58,7 @@ class Wagon{
         }
         return total
     }
+
 
 
 }
