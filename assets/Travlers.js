@@ -11,16 +11,26 @@ function toHTMLPassenger(passenger){
     passengerSummary.append(passenger.name)
     passengerElement.append(`Food: ${passenger.food}; Is Healthy: ${passenger.isHealthy}`)
     main.append(passengerElement)
-    
+    psngrButtonZone.append(passenger.eatButton)
+    passenger.eatButton.addEventListener('click', function(){
+        passenger.eat()
+        passengerElement.innerHTML = `Food: ${passenger.food}; Is Healthy: ${passenger.isHealthy}`
+    })
 }
-
+let psngrButtonZone = document.querySelector('.passenger-buttons')
 
 class Traveler{
     constructor(name){
         this.name = name
         this.food = 1
         this.isHealthy = true
+        this.eatButton = document.createElement('button')
+        this.eatButton.append(`${this.name} Consume`)
+        
     }
+    
+    
+
 
     hunt(){
       this.food += 2

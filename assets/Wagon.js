@@ -25,20 +25,27 @@ class Wagon{
     toHTMLPassenger(passenger){
         let passengerElement = document.createElement('div')
         let passengerSummary = document.createElement('h3')
+        let passengerDetails = document.createElement('p')
         passengerElement.append(passengerSummary)
+        passengerElement.append(passengerDetails)
         passengerSummary.append(passenger.name)
-        passengerElement.append(`Food: ${passenger.food}; Is Healthy: ${passenger.isHealthy}`)
+        passengerDetails.append(`Food: ${passenger.food}; Is Healthy: ${passenger.isHealthy}`)
         main.append(passengerElement)
+        psngrButtonZone.append(passenger.eatButton)
+        passenger.eatButton.addEventListener('click', function(){
+            passenger.eat()
+            passengerDetails.innerHTML = `Food: ${passenger.food}; Is Healthy: ${passenger.isHealthy}`
+        })
         
     }
 
     getAvailableSeatCount(){
-       return console.log(this.capacity - this.passengers.length)
+       return this.capacity - this.passengers.length
     }
-    join(travler){
-        if((this.capacity - this.passengers.length) > 0){ 
-        this.passengers.push(travler)
-        this.toHTMLPassenger(travler)
+    join(traveler){
+        if(this.getAvailableSeatCount() > 0){ 
+        this.passengers.push(traveler)
+        this.toHTMLPassenger(traveler)
         this.currentPassengers += 1
     }
 

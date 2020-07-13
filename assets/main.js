@@ -23,7 +23,9 @@ buttonZone.append(wagonButton, passengerButton)
 
 wagonButton.addEventListener('click', function(){
     if(capacityInput.value > 0){
-        return new Wagon(capacityInput.value)
+        let newWagonCapacity = capacityInput.value
+        capacityInput.value = ''
+        return new Wagon(newWagonCapacity)
     }
     return alert('Please Input A Capacity Greater Than Zero')
 
@@ -31,7 +33,9 @@ wagonButton.addEventListener('click', function(){
 
 passengerButton.addEventListener('click', function(){
     if(passengerNameInput.value.length > 0){
-        return toHTMLPassenger(new Traveler(passengerNameInput.value))
+        let newTraveler = passengerNameInput.value
+        passengerNameInput.value = ''
+        return toHTMLPassenger(new Traveler(newTraveler))
     }
     return alert('Please Input A Name')
 
